@@ -1,0 +1,32 @@
+spring:
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled:true
+    static-path-pattern: /static/**     #  配置静态资源访问路径
+
+
+  datasource:   #  配置数据源通用信息
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC
+    password: 111111
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    druid:
+      stat-view-servlet:
+        enabled: true
+
+      filters: stat,wall
+    type: com.alibaba.druid.pool.DruidDataSource
+  resources:
+    add-mappings: true
+    cache:
+      period: 10
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+
+mybatis-plus:   #配置mybatis的相关配置
+  mapper-locations: classpath:com/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true

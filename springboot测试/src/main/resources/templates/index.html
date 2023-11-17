@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" >
+    <title></title>
+</head>
+<style type="text/css">
+    html{
+        width: 100%;
+        height: 100%;
+    }
+    body{
+        background:linear-gradient(100deg,#e3ddf9 0%,#f0faff 20%,#ffffff 50%,#d4e2f2 100%) no-repeat;
+        width: 100%;
+        height: 100%;
+        display: flex;
+    }
+    .box{
+        position: absolute;
+        top: 15%;
+        left:25%;
+        width: 50%;
+        height: 60%;
+        background-color: #f3fbff;
+        border-radius: 10px;
+    }
+    .wanye{
+        width: 35%;
+        height: 100%;
+        background-image: url("/static/素材.png");
+        background-size:cover;
+        border-radius: 10px;
+        opacity: 0.85;
+    }
+    .feng{
+        width:55px;
+        height: 35px;
+        transform: rotate(135deg);
+        position: absolute;
+        top: 90%;
+        left:90%;
+    }
+    .deng{
+        background: linear-gradient(180deg,#f3fbff 0%,#c8c8f7 100%,#b4a7e5 100%);
+        position: absolute;
+        top: 80%;
+        left: 55%;
+        width: 25%;
+        height: 10%;
+        text-align: center;
+        font-weight: 700;
+        color: white;
+        font-size: 16px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        border: none;
+        border-radius: 5px;
+        transition:all;
+        transition-duration: 0.3s;
+    }
+    .deng:hover{
+        box-shadow: 1px 1px 1px 1px  rgba(0,0,0,0.3);
+    }
+    .act{
+
+        background:url("/static/万叶1.png") ;
+        background-size: 100% 100%;
+        position: absolute;
+        top: 60%;
+        left: 80%;
+        width: 20%;
+        height: 40%;
+        transition: background-image;
+        transition-duration: 0.3s;
+    }
+
+    .user{
+    //背景设为透明,加下边框
+
+    display: inline;
+        border: none;
+        border-bottom: 2px solid #ebeefc ;
+        outline: none;
+        font-size: 16px;
+        font-weight: 700;
+        background:transparent;
+        width: 50%;
+        height: 10%;
+        position: absolute;
+        top: 20%;
+        left: 40%;
+    }
+    .pass{
+        top:50%
+    }
+</style>
+<script src="/static/jquery.js">
+</script>
+<script type="text/javascript">
+    //做万叶图片的动画
+    //当鼠标放上去时,一秒后换成wanye2,一秒后换成万叶3,停在万叶3不变
+    //当鼠标移走的时候瞬间换回万叶1
+    $(function(){
+        var t1,t2;
+        $('.act').hover(function(){
+                //设置两个延时定时器
+                //一个是3s后执行,一个是6s后执行
+                t1=setTimeout(function(){
+                    $('.act').css('backgroundImage','url(/static/万叶2.png)')
+                },1000)
+                t2=setTimeout(function(){
+                    $('.act').css('backgroundImage','url(/static/万叶3.png)')
+                },3000)
+            },
+            function(){
+                //关掉两个定时器
+                clearInterval(t1)
+                clearInterval(t2)
+                //变回万叶1
+                $('.act').css('backgroundImage','url(/static/万叶1.png)')
+
+            })
+    })
+
+</script>
+<body>
+<div class="box">
+    <div class="wanye"></div>
+
+    <div class="act">	</div>
+    <form action="#" method="">
+        <input type="button" class="deng" value="login" />
+        <input type="text" name="万叶真帅"  placeholder="万叶真帅" class="user"/>
+        <input type="text" name="你说得对" placeholder="上面说得对"  class="user pass"/>
+    </form>
+</div>
+<img src="/static/真枫叶.png" class="feng">
+</body>
+</html>
